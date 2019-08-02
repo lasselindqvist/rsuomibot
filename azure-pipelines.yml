@@ -1,5 +1,0 @@
-- task: CopyFilesOverSSH@0
-  inputs:
-    sshEndpoint: 'rsuomibotti_azure_palvelin'
-    contents: '**'
-    targetFolder: '.saxo/commands'
