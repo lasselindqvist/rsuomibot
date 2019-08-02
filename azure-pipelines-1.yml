@@ -5,5 +5,6 @@ steps:
 - task: CopyFilesOverSSH@0
   inputs:
     sshEndpoint: 'rsuomibotti_azure_palvelin'
+    sourceFolder: '/commands/'
     contents: '**'
     targetFolder: '/home/winaj/.saxo/commands'
