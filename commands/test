@@ -4,7 +4,5 @@ import urllib.parse
 import saxo
 
 @saxo.pipe
-def weather(arg):
-    arg = urllib.parse.quote(arg)
-    page = saxo.request("http://services.nonceword.org/r/weather/" + arg)
-    return page["text"]
+def test(arg):
+    return "Hello World!"
