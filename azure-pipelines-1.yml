@@ -2,3 +2,8 @@ trigger:
 - master
 
 steps:
+- task: CopyFilesOverSSH@0
+  inputs:
+    sshEndpoint: 'rsuomibotti_azure_palvelin'
+    contents: '**'
+    targetFolder: '/home/winaj/.saxo/commands'
