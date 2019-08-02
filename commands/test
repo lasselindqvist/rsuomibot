@@ -5,4 +5,8 @@ import saxo
 
 @saxo.pipe
 def test(arg):
-    return "Hello World! " + arg
+    if arg:
+        return "Hello World! "
+    else:
+        return "Hello " + arg + "!"
+    
