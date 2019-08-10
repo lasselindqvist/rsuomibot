@@ -100,4 +100,7 @@ sanonnat = [
   
 @saxo.pipe
 def sano(arg):
+  if arg:
+    return secure_random.choice([x for x in sanonnat if x.find(arg) != -1])
+
   return secure_random.choice(sanonnat)
