@@ -1,0 +1,76 @@
+#!/usr/bin/env python3
+
+import saxo
+import random
+
+secure_random = random.SystemRandom()
+
+saajutut = [
+  'Jos ei pauku Paavalina eikä kylmä kynttelinä, niin on halla heinäkuussa, talvi keskellä kesää.',
+  'Jos Tipurtin yöt kylmää ( 13 – 16.4.), seuraa 40 pakkasyötä vaikka keskellä kesää.',
+  'Mitä Mattina sitä Mariaan.',
+  'Helmikuun suoja puutteen tuoja.',
+  'Mitä Mariana malolla sitä Vappuna vaolla.',
+  'Heikki heittää, Paavo painaa, Matti nostaa. (Heikin päivästä alkaa matikan kutu)',
+  'Tammikuun ensimmäisestä suvesta 200 päivän kuluttua pääsee uutta ruista puimaan.',
+  'Heikin päivänä karhu kääntää kylkeä. Talvi silloin puolessa. Eläinten rehua pitää olla puolet jäljellä.',
+  'Hermannilta heinään.',
+  'Pihlaja ei kanna kahta taakkaa.',
+  'Jos tammikuu on tasainen, niin helmikuulla heilahtaa. Jos ei helmikuulla heilaha, niin maaliskuulla maksetaan. Huhtikuu kaiken kuittaa.',
+  'Jos on usva uunna vuonna, niin on halla heinäkuussa.',
+  'Jos maaliskuu alkaa pohjatuulella, niin kolme seuraavaa kuukautta ovat kylmiä.',
+  'Jos kukko Mattina räystään alla nokkansa kastelee, niin härkä Mariana janoon kuolee.',
+  'Etelätuulella on ruma vaimo. Siksi se puhaltelee koko yön. Pohjoistuulella on kaunis vaimo, jonka vuoksi se ei malta puhallella yöllä. Sillä on kiire kauniin vaimonsa viereen nukkumaan.',
+  'Tapion riihenpuinnista on 9 viikkoa lumien lähtöön.',
+  'Teerien kuherruksesta on 7 viikkoa sulaan maahan.',
+  'Kun kuulet kuovin äänen keväällä, älä enää mene jäälle.',
+  'Sateita on kesällä tulossa, jos kanat rupeavat joukolla ottamaan hiekkakylpyjä eli rypemään.',
+  'Sateita on tulossa, jos pääskyset lentelevät edestakaisin matalalla.',
+  'Surviaisten tanssi ennustaa poutasäitä.',
+  'Aamurusko päivän paska. Iltarusko ennustaa selvää päivää seuraavaksi päiväksi.',
+  'Ukkospilvet kulkevat yleensä koko kesän keväällä ensiksi valitemaansa reittiä.',
+  '"Rastaan rinta" aamulla taivaalla ennusti poutasäätä päiväksi.',
+  'Varhainen sade "karjan kynteen" ennusti kaunista päivää.',
+  'Aamukaste ennusti poutaa.',
+  'Maakiven hikoaminen ennusti sateita.',
+  'Jyrkinä jyräys kalamiehen kattilassa. Ristinä emärimmaus lintumiehen rihmasessa.',
+  'Liisan liukkaat, Kaisan kaljamat.',
+  'Itä talven istuttaa, pohjoinen pois sen puhaltaa.',
+  'Jos huhtikuussa paita päällä halkoja hakataan, niin toukokuussa turkki päällä toukoja kylvetään.',
+  'Jos muurahaiset keväällä pysyttelevät pesässään, niin vielä tulee lumisateita. Jos ne vaeltavat kauempana, niin lunta ei enää sada sinä keväänä.',
+  'Pane keväällä koivunoksa maljakkoon ja laske kuinka monta vuorokautta menee siihen, kun ne ovat hiirenkorvalla. Kuinka monta päivää menee siihen, kun oksat ovat hiirenkorvalla, niin monta viikkoa menee siihen, kun koivut ovat luonnossa hiirenkorvalla.',
+  'Jos ampiaiset pyrkivät tulemaan sisälle, se ennusti sateita.',
+  'Linnunradasta vanhat ihmiset ennustivat tulevia säitä. Jos linnunrata ei ollut tasainen, vaan sinä näkyi muuta vaaleampia kohtia, niin keväällä oli vielä odotettavissa lumisateita.',
+  'Kun koivut ovat hiirenkorvalla, alkaa sären kutu.',
+  'Jos Urpona on paita päällä, niin kesällä on turkki päällä.',
+  'Itätuuli tuo sadetta.',
+  'Jos Letuksen eli Markuksen yön kylmää, niin tulee huono kesä.',
+  'Revontulet talvella ennustavat pyryjä.',
+  'Jos pysyvän lumen satoi syksyllä, kun vielä oli lehti puussa, se ennusti sitä, että tulevana talvena kuoli paljon nuoria miehiä.',
+  'Jos keväällä tuli ukkossää ennen juhannusta tai kun vielä järvissä oli jää, se ennusti kylmää kesää.',
+  'Ukonilman jälkeen sää yleensä jäähtyy.',
+  'Jos kuun ympärillä on talvella kehä, tulee tuisku.',
+  'Sitä syksynä, mitä päivä Pärttylinä.',
+  'Simo siltoja tekee, Martti maita vahvistaa, Antti aisoilla ajaa.',
+  'Esteri hameen helmat kastelee.',
+  'Jaakko heittää kylmän kiven kaivoon.',
+  'Semmoinen ilta, kun on Marian etsikkopäivänä (2.7.) on 40 päivää siitä eteenpäin.',
+  'Kun on kylmä huhtikuu ja märkä toukokuu, niin on täysi heinälato.',
+  'Uudenvuoden kirkas tähtitaivas lupasi hyvää ohravuotta, sienisatoa ja karjan menestymistä.',
+  'Jos teeri kukersi elo-syyskuun vaihteessa, talvi tuli varhain.',
+  'Mikosta päre pihtiin, tutti rukkiin, kaali kuppiin, akat pirttiin ja nauriit kuoppaan.',
+  'Jos keväällä lehti tulee nopeassa tahdissa puihin, on maaviljelijällä elonkorjuuaikana kiirettä, sillä viljakin valmistuu nopeasti.',
+  'Jaakkona menee käelle ohran siikanen kurkkuun ja se lakkaa kukkumasta.',
+  'Pietarin päivä on viimeinen rukiin kylvöpäivä.',
+  'Jos elokuun sateet tulevat taivaalla olevista tummista pilvistä, on tulossa hallaöitä.',
+  'Heikkinä heinät kahtia.',
+  'Paavalina päiväkulta lämmittää.',
+  'Mattina toinen silmä vettä vuotaa.',
+  'Varisten raakkuminen ennustaa, että sinä päivänä vielä sataa.',
+  'Ukonilma jäitten aikaan ennustaa kylmää kesää.',
+  'Itä talven istuttaa. Pohjoinen sen pois puhaltaa.'
+  ]
+  
+@saxo.pipe
+def saa(arg):
+  return secure_random.choice(saajutut)
