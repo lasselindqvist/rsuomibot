@@ -101,6 +101,10 @@ sanonnat = [
 @saxo.pipe
 def sano(arg):
   if arg:
-    return secure_random.choice([x for x in sanonnat if x.find(arg) != -1])
+    filtered = [x for x in sanonnat if x.find(arg) != -1]
+    if not filtered:
+      return "joka kuuseen kurkottaa, se katajaan kapsahtaa"
+
+    return secure_random.choice(filtered)
 
   return secure_random.choice(sanonnat)
