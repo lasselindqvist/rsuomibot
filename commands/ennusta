@@ -72,5 +72,5 @@ saajutut = [
   ]
   
 @saxo.pipe
-def saa(arg):
+def ennusta(arg):
   return secure_random.choice(saajutut)
