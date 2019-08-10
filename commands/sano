@@ -95,7 +95,8 @@ sanonnat = [
   'Loistaa kuin Naantalin aurinko.',
   'Kiekuu kuin kukko tunkiolla.',
   'Ei näe puilta metsää.',
-  'Tiukassa kuin sillit suolassa.'
+  'Tiukassa kuin sillit suolassa.',
+  'Parempi rengel pivossa kuin kymmenen Jonuzia oksalla.'
   ]
   
 @saxo.pipe
