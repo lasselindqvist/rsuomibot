@@ -6,21 +6,13 @@ import saxo
 
 @saxo.command()
 def quote(arg):
-    if not arg:
-        path = os.path.join(saxo.env("base"), "database.sqlite3")
-        with saxo.database(path) as db:
-            if "saxo_quote" in db:
-                query = "SELECT message FROM saxo_quote ORDER BY RANDOM() LIMIT 1"
-                for row in db.query(query):
-                    return row[0]
-                return "No quotes found"
-            else:
-                return "Sorry, no database table found"
-        return "Sorry, no available data"
-           
-#    if arg:
-#        with saxo.database() as db:
-#            now = int(time.time())
-#            channel = saxo.env("sender")
-#            db["saxo_quote"].insert((now, channel, arg))
-#            return "Quote saved"
+    path = os.path.join(saxo.env("base"), "database.sqlite3")
+    with saxo.database(path) as db:
+        if "saxo_quote" in db:
+            query = "SELECT message FROM saxo_quote ORDER BY RANDOM() LIMIT 1"
+            for row in db.query(query):
+                return row[0]
+            return "No quotes found"
+        else:
+            return "Sorry, no database table found"
+    return "Sorry, no available data"
