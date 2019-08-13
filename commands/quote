@@ -18,9 +18,9 @@ def quote(arg):
                 return "Sorry, no database table found"
         return "Sorry, no available data"
            
-    if arg:
-        with saxo.database() as db:
-            now = int(time.time())
-            channel = saxo.env("sender")
-            db["saxo_quote"].insert((now, channel, arg))
-            return "Quote saved"
+#    if arg:
+#        with saxo.database() as db:
+#            now = int(time.time())
+#            channel = saxo.env("sender")
+#            db["saxo_quote"].insert((now, channel, arg))
+#            return "Quote saved"
