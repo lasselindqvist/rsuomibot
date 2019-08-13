@@ -10,7 +10,7 @@ def quote(arg):
         path = os.path.join(saxo.env("base"), "database.sqlite3")
         with saxo.database(path) as db:
             if "saxo_quote" in db:
-                query = "SELECT * FROM saxo_quote ORDER BY RANDOM() LIMIT 1"
+                query = "SELECT message FROM saxo_quote ORDER BY RANDOM() LIMIT 1"
                 for row in db.query(query):
                     return row[0]
                 return "No quotes found"
