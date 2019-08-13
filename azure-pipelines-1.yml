@@ -9,6 +9,13 @@ steps:
     contents: '**'
     targetFolder: '/home/winaj/.saxo/commands'
 
+- task: CopyFilesOverSSH@0
+  inputs:
+    sshEndpoint: 'rsuomibotti'
+    sourceFolder: 'plugins/'
+    contents: '**'
+    targetFolder: '/home/winaj/.saxo/plugins'
+    
 - task: SSH@0
   inputs:
     sshEndpoint: 'rsuomibotti'
