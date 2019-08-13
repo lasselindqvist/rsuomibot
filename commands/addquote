@@ -4,7 +4,7 @@ import os.path
 import time
 import saxo
 
-@saxo.command(authorised=True, private=True)
+@saxo.command(authorised=True)
 def addquote(arg):
     if arg:
         with saxo.database() as db:
