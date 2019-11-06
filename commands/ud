@@ -12,4 +12,8 @@ def ud(arg):
     r = requests.get("http://www.urbandictionary.com/define.php?term={}".format(word))
     soup = BeautifulSoup(r.content)
 
-    return soup.find("div",attrs={"class":"meaning"}).text
+    meaning = soup.find("div",attrs={"class":"meaning"})
+    if meaning:
+      return meaning.text
+    
+    return "Sorry, we couldn't find: " + arg
