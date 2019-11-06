@@ -21,3 +21,8 @@ steps:
     sshEndpoint: 'rsuomibotti'
     runOptions: 'commands'
     commands: 'chmod +x /home/winaj/.saxo/commands/*'
+- task: SSH@0
+  inputs:
+    sshEndpoint: 'rsuomibotti'
+    runOptions: 'commands'
+    commands: 'pip3 install beautifulsoup4'
