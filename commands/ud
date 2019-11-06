@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+import requests
+import saxo
+import random
+from bs4 import BeautifulSoup
+
+@saxo.pipe
+def ud(arg):
+  if arg:
+    word = arg
+    r = requests.get("http://www.urbandictionary.com/define.php?term={}".format(word))
+    soup = BeautifulSoup(r.content)
+
+    return soup.find("div",attrs={"class":"meaning"}).text
